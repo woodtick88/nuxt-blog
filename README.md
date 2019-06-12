@@ -1,6 +1,6 @@
 # nuxt-blog
 
-> My blog on nuxt.js
+> Blog on Nuxt.js
 
 ## Build Setup
 
