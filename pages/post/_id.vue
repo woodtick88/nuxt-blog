@@ -30,7 +30,10 @@
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem veritatis accusantium voluptatibus accusamus quos doloremque ut in distinctio, quam delectus?</p>
     </main>
     <footer>
-      <app-comment-form></app-comment-form>
+      <app-comment-form
+        @created="createCommentHandler"
+        v-if="canAddComment"
+      ></app-comment-form>
       <div class="comments" v-if="true">
         <app-comment
           v-for="comment in 5"
@@ -54,6 +57,16 @@ export default {
   },
   validate({params}) {
     return Boolean(params.id)
+  },
+  data() {
+    return {
+      canAddComment: true
+    }
+  },
+  methods: {
+    createCommentHandler() {
+      this.canAddComment = false
+    }
   }
 }
 </script>
