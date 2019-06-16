@@ -30,6 +30,7 @@
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem veritatis accusantium voluptatibus accusamus quos doloremque ut in distinctio, quam delectus?</p>
     </main>
     <footer>
+      <app-comment-form></app-comment-form>
       <div class="comments" v-if="true">
         <app-comment
           v-for="comment in 5"
@@ -44,10 +45,12 @@
 
 <script>
 import AppComment from '@/components/main/Comment'
+import AppCommentForm from '@/components/main/CommentForm'
 
 export default {
   components: {
-    AppComment
+    AppComment,
+    AppCommentForm
   },
   validate({params}) {
     return Boolean(params.id)
