@@ -1,5 +1,5 @@
 <template>
-    <h1>Welcome to admin page</h1>
+    <div>User</div>
 </template>
 
 <script>
@@ -8,3 +8,6 @@ export default {
 }
 </script>
 
+<style lang="sass" scoped>
+
+</style>
