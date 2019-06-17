@@ -9,7 +9,7 @@
             ref="form"
             @submit.native.prevent="onSubmit"
         >
-            <h1>Добавить комментарий</h1>
+            <h2 class="title">Войти в панель администратора</h2>
             <el-form-item label="Логин" prop="login">
                 <el-input v-model.trim="controls.login"></el-input>
             </el-form-item>
@@ -59,12 +59,32 @@ export default {
     },
     methods: {
         onSubmit() {
-            console.log('hhh')
+            this.$refs.form.validate(async valid => {
+                if (valid) {
+                    this.loading = true
+
+                    try {
+                        const formData = {
+                            login: this.controls.login,
+                            password: this.controls.password
+                        }
+
+                       await this.$store.dispatch('auth/login', formData)
+                       this.$router.push('/admin')
+
+                    } catch (e) {
+                        this.loading = false
+                    }
+                }
+            })
         }
     }
 }
 </script>
 
 <style lang="sass" scoped>
+
+.title
+    font-family: Helvetica, sans-serif    
 
 </style>
