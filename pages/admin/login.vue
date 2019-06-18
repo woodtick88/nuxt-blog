@@ -29,7 +29,7 @@
                     native-type="submit"
                     :loading="loading"
                 >
-                    Добавить комментарий
+                    Войти
                 </el-button>
             </el-form-item>
         </el-form> 
