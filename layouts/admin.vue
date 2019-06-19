@@ -1,12 +1,14 @@
 <template>
-    <div class="admin-layout-wrap">
-        <el-container :style="{height: '100%'}">
-            <el-aside width="260px">
-                <app-aside></app-aside>
-            </el-aside>
-            <nuxt />    
-        </el-container>
-    </div>
+  <div class="admin-layout-wrap">
+    <el-container :style="{height: '100%'}">
+      <el-aside width="250px">
+        <app-aside />
+      </el-aside>
+      <el-main>
+        <nuxt />
+      </el-main>
+    </el-container>
+  </div>
 </template>
 
 <script>
