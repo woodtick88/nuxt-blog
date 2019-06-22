@@ -26,11 +26,24 @@ export const actions = {
     update({}, {id, text}) {
 
     },
-    async create({}, {title, text}) {
-      return await new Promise(resolve => {
-        setTimeout(() => {
-          resolve()
-        }, 1000)
-      })
+    async create({}, {title, text, image}) {
+
+      try {
+        const fd = new FormData()
+
+        fd.append('title', title)
+        fd.append('text', text)
+        fd.append('image', image, image.name)
+
+        return await new Promise(resolve => {
+          setTimeout(() => {
+            resolve()
+          }, 1000)
+        })
+
+      } catch (e) {
+
+      }
+      
     }
 }

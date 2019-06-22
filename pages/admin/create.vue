@@ -30,7 +30,25 @@
             <div :key="controls.text">
                 <vue-markdown>{{controls.text}}</vue-markdown>
             </div>            
-        </el-dialog>           
+        </el-dialog>   
+
+        <el-upload
+            drag
+            action="https://jsonplaceholder.typicode.com/posts/"
+            :on-change="handlerImageChange"
+            :auto-upload="false"
+            ref="upload"
+            class="mb2"
+        >
+            <i class="el-icon-upload"></i>
+            <div class="el-upload__text">
+                Перетащите иконку <em>или нажмите</em>
+            </div>
+            <div class="el-upload__tip" slot="tip">
+                Файлы и расширением jpg/png
+            </div>
+
+        </el-upload>        
 
         <el-form-item>
             <el-button
@@ -51,6 +69,7 @@ export default {
     middleware: ['admin-auth'],
     data() {
         return {
+            image: null,
             previewDialog: false,
             loading: false,
             controls: {
@@ -68,14 +87,18 @@ export default {
         }
     },
     methods: {
+        handlerImageChange(file, filelist) {
+            this.image = file.raw
+        },
         onSubmit() {
             this.$refs.form.validate(async valid => {
-                if (valid) {
+                if (valid && this.image) {
                     this.loading = true
 
                     const formData = {
                         title: this.controls.title,
-                        text: this.controls.text
+                        text: this.controls.text,
+                        image: this.image
                     }
                     
                     try {
@@ -83,6 +106,8 @@ export default {
 
                         this.controls.title = ''
                         this.controls.text = ''
+                        this.image = null
+                        this.$refs.upload.clearFiles()
                         this.$message.success('Пост создан')
                         this.loading = false
 
@@ -90,6 +115,8 @@ export default {
                         this.loading = false
                     }
 
+                } else {
+                    this.$message.warning('Форма не валидна')
                 }
             })
         }
