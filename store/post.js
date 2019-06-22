@@ -1,3 +1,5 @@
+import { create } from "domain";
+
 const posts = [
     {title: 'Post 1', date: new Date(), views: 22, comments: [1, 2, 2, 4], _id: '121'},
     {title: 'Post 2', date: new Date(), views: 32, comments: [1, 2], _id: '2221'}
@@ -23,5 +25,12 @@ export const actions = {
     },
     update({}, {id, text}) {
 
+    },
+    async create({}, {title, text}) {
+      return await new Promise(resolve => {
+        setTimeout(() => {
+          resolve()
+        }, 1000)
+      })
     }
 }
