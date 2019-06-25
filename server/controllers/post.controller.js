@@ -41,7 +41,7 @@ module.exports.update = async (req, res) => {
     }
 
     try {
-        const post = await Post.findOne()AndUpdate({
+        const post = await Post.findOneAndUpdate({
             _id: req.params.id
         }, {$set}, {new: true})
         res.json(post)
