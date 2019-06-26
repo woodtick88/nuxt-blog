@@ -7,7 +7,7 @@ const storage = multer.diskStorage({
         cb(null, path.resolve(__dirname, '../../', 'static'))
     },
     filename(req, file, cb) {
-        cb(null, `${file.oroginalname}-${mpment().format('DDMMYYYY-HHmmss_SSS')}`)
+        cb(null, `${moment().format('DDMMYYYY-HHmmss_SSS')}-${file.originalname}`)
     }
 })
 
