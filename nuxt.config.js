@@ -46,6 +46,9 @@ module.exports = {
   */
   axios: {
   },
+  env: {
+    appName: 'Nuxt Blog'
+  },
   /*
   ** Build configuration
   */

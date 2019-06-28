@@ -34,6 +34,9 @@
 <script>
 export default {
     layout: 'admin',
+    head: {
+        title: `Создать пользователя | ${process.env.appName}`
+    },
     data() {
         return {
             loading: false,

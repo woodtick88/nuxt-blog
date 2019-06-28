@@ -15,7 +15,7 @@ import AppPost from '@/components/main/Post'
 
 export default {
   head: {
-    title: 'Главная'
+    title: `Главная | ${process.env.appName}`
   },
   components: {
     AppPost
